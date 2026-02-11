@@ -64,3 +64,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# gem "omniauth-rails_csrf_protection", "~> 0.1.2"
+# gem "mastodon-api", require: "mastodon"
+gem "omniauth"
+gem "omniauth-oauth2"
