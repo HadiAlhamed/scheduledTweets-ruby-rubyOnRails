@@ -22,7 +22,7 @@ class OmniauthCallbacksController < ApplicationController
       token: token,
       image: user_info["avatar"]
     )
-    redirect_to root_path, notice: "Successfully connected to your account!"
+    redirect_to mastodon_accounts_path, notice: "Successfully connected to your account!"
   rescue => e
     Rails.logger.error e.full_message
     redirect_to root_path, alert: e.message.to_s
