@@ -5,5 +5,6 @@
 # password_confirmation:virtual string
 class User < ApplicationRecord
   has_secure_password
+  has_many :mastodon_accounts
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email address" }
 end
