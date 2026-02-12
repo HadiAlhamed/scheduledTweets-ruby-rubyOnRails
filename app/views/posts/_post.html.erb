@@ -1,0 +1,11 @@
+<div class = "mb-3 card card-body">
+    <%= post.body %>
+    <div class = "me-4">
+        <%= image_tag post.mastodon_account.image, class: "rounded-circle", width: 40, height: 40 %>
+        <%= link_to "@#{post.mastodon_account.username}", "https://mastodon.social/@#{post.mastodon_account.username}", target: "_blank" %>
+        <% if post.published? %>
+            <%= link_to "View Post" , "" , target: :_blank %>
+        <%end%>
+    </div>
+</div>
+#https://mastodon.social/@jobsfordevelopers@mastodon.world/116058511225773758

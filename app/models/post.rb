@@ -7,4 +7,8 @@ class Post < ApplicationRecord
   after_initialize do
     self.publish_at ||= 24.hours.from_now
   end
+
+  def published?
+    post_id?
+  end
 end
