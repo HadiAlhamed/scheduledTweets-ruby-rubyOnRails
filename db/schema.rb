@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_12_021836) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_12_165616) do
   create_table "mastodon_accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "image"
@@ -23,6 +23,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_12_021836) do
     t.index ["user_id"], name: "index_mastodon_accounts_on_user_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.integer "mastodon_account_id", null: false
+    t.string "post_id"
+    t.datetime "publish_at"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["mastodon_account_id"], name: "index_posts_on_mastodon_account_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", null: false
@@ -31,4 +43,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_12_021836) do
   end
 
   add_foreign_key "mastodon_accounts", "users"
+  add_foreign_key "posts", "mastodon_accounts"
+  add_foreign_key "posts", "users"
 end

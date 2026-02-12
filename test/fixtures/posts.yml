@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  mastodon_account: one
+  post_id: MyString
+  body: MyText
+  publish_at: 2026-02-12 19:56:16
+
+two:
+  user: two
+  mastodon_account: two
+  post_id: MyString
+  body: MyText
+  publish_at: 2026-02-12 19:56:16
