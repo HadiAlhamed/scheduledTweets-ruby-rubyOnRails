@@ -9,6 +9,12 @@ class PostsController < ApplicationController
   end
 
   def create
+    @post = Current.user.posts.create(post_params)
+    if @post.save
+      redirect_to posts_path, notice: "Post was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
   #
   def show
@@ -21,5 +27,10 @@ class PostsController < ApplicationController
   end
   #
   def destroy
+  end
+
+  private
+  def post_params
+    params.require(:post).permit(:mastodon_account_id, :body, :publish_at)
   end
 end
