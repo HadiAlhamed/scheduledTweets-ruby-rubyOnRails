@@ -1,0 +1,15 @@
+<div class = "d-flex align-items-center justify-content-between">
+<h1>Mastodon Accounts</h1>
+<%= link_to "Connect A Mastodon Account" ,  "/auth/mastodon" , method: :post , class: "btn btn-primary" %>
+</div>
+<% @mastodon_accounts.each do |account| %>
+    <div class = "d-flex align-items-center mb-4">
+        <div class = "me-4">
+            <%= image_tag account.image,
+            class: "rounded-circle me-3",
+             style: "width: 62px; height: 62px; object-fit: cover;" %>
+             <%= link_to account.username , "https://mastodon.social/@#{account.username}" , target: "_blank" %>
+        </div>
+        <%= button_to "Disconnect" , mastodon_account_path(account) , data: {turbo_confirm: "Are you sure you want to disconnect this account?"} ,method: :delete , class: "btn btn-danger" %>
+    </div>
+<%end%>

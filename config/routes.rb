@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   patch "/password/reset/edit", to: "password_resets#update"
 
   get "/auth/:provider/callback", to: "omniauth_callbacks#mastodon"
-  get "/auth/failure", to: redirect("/")
+  get "/auth/failure", to: redirect("/") # consider deleting it
+
+  resources :mastodon_accounts
+
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
