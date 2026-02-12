@@ -1,9 +1,10 @@
 <h1>Schedule a New Post</h1>
 
-<%= form_with model: @post, method: :post do |form| %>
+<%= form_with model: @post do |form| %>
+    <%= render partial: "shared/form_errors", locals: { form: form } %>
     <div class = "d-flex flex-column gap-2 mb-3">
         <%= form.label :Mastodon_account_id , class: "form-label " %>
-        <%= form.collection_select :mastodon_account_id, Current.user.mastodon_accounts, :id, :username, prompt: "Select a Mastodon Account", class: "form-control form-select" %>
+        <%= form.collection_select :mastodon_account_id, Current.user.mastodon_accounts, :id, :username_with_at, prompt: "Select a Mastodon Account", class: "form-control form-select" %>
         <%= link_to "Connect your Mastodon Account" , "/auth/mastodon"  %>
     </div>
    
