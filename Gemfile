@@ -70,3 +70,5 @@ end
 gem "omniauth"
 gem "omniauth-oauth2"
 gem "mastodon-api", require: "mastodon"
+
+gem "sidekiq", "~> 8.1"
