@@ -1,6 +1,6 @@
 class MastodonAccount < ApplicationRecord
   belongs_to :user
-  has_many :posts
+  has_many :posts, dependent: :destroy
   validates :username, uniqueness: true
 
   def username_with_at
